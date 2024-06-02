@@ -16,11 +16,11 @@ class CNN(nn.Module):
     def __init__(self, num_features=8, out_channels=128):
         super().__init__()
         self.conv_blocks = nn.ModuleList([
-            ConvBlock(5, num_features, 5, 2, 2),
-            ConvBlock(num_features, num_features*2, 5, 2, 1),
-            ConvBlock(num_features*2, num_features*4, 3, 2, 0),
-            ConvBlock(num_features*4, num_features*4, 3, 1, 0),
-            ConvBlock(num_features*4, num_features*4, 3, 1, 0),
+            ConvBlock(5, num_features, (50, 5), 5, 0),
+            ConvBlock(num_features, num_features*2, (1,3), 1, 0),
+            ConvBlock(num_features*2, num_features*4, (1,3), 1, 0),
+            ConvBlock(num_features*4, num_features*4, (1,3), 1, 0),
+            ConvBlock(num_features*4, num_features*4, (1,4), 1, 0),
         ])
 
         self.lin_layers = nn.Sequential(

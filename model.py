@@ -29,6 +29,14 @@ class CNN(nn.Module):
             nn.Linear(out_channels, out_channels),
         )
 
+        self.classify = nn.Sequential(
+            nn.Linear(out_channels, 64),
+            nn.ReLU(),
+            nn.Linear(64, 64),
+            nn.ReLU(),
+            nn.Linear(64, 2, bias=False)
+        )
+
     def forward(self, x):
         for block in self.conv_blocks:
             x = block(x)
@@ -48,6 +56,13 @@ class Transformer(nn.Module):
             nn.Linear(out_channels, out_channels),
         )
         self.csl_token = nn.Parameter(torch.randn(1, 1, d_model))
+        self.classify = nn.Sequential(
+            nn.Linear(out_channels, 64),
+            nn.ReLU(),
+            nn.Linear(64, 64),
+            nn.ReLU(),
+            nn.Linear(64, 2, bias=False)
+        )
 
     def forward(self, x):
         # x: (N, C, H, W)

@@ -1,12 +1,12 @@
 import csv
 import numpy as np
 import os
-from tqdm import tqdm
+#from tqdm import tqdm
 
-path = '../Datasets/MindBigData-Imagenet'
+path = 'MindBigData-Imagenet'
 len(os.listdir(path))
 data = []
-for item in tqdm(os.listdir(path)):
+for item in os.listdir(path):
     path_i = os.path.join(path, item)
     csv_data = list(csv.reader(open(path_i, 'r')))
     np_data = np.array(csv_data)[:,1:].astype(float)

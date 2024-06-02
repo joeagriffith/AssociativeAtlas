@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
-from dataset import SpectrogramTripletDataset
+from data.dataset import SpectrogramTripletDataset
 from model import CNN
 from optim.functional import cosine_schedule
 
